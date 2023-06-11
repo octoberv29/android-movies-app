@@ -10,4 +10,8 @@
     <string name="error_general">Sorry, error has occurred!</string>
     <string name="ok">OK</string>
     <string name="trending">Trending</string>
+    <string name="vote_average">Vote Average</string>
+    <string name="release_date">Release date</string>
+    <string name="overview">Overview</string>
+    <string name="language">Language</string>
 </resources>

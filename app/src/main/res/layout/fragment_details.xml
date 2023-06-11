@@ -10,9 +10,10 @@
     <!-- Original Title -->
 
     <ImageView
-        android:id="@+id/ivPoster"
+        android:id="@+id/fragment_details_poster"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
+        android:importantForAccessibility="no"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,25 +24,25 @@
         tools:src="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/tvOriginalTitle"
+        android:id="@+id/fragment_details_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="4"
         android:paddingStart="16dp"
+        android:paddingTop="16dp"
         android:paddingEnd="32dp"
         android:paddingBottom="16dp"
-        android:paddingTop="16dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPoster"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_details_poster"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/ivPoster"
-        app:layout_constraintTop_toTopOf="@+id/ivPoster"
+        app:layout_constraintStart_toEndOf="@+id/fragment_details_poster"
+        app:layout_constraintTop_toTopOf="@+id/fragment_details_poster"
         app:layout_constraintVertical_bias="0.5"
         tools:text="@tools:sample/lorem/random" />
 
     <View
-        android:id="@+id/view_divider_top"
+        android:id="@+id/fragment_details_divider_top"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
@@ -49,110 +50,110 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPoster"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_details_poster"
         app:layout_constraintVertical_bias="0.0" />
 
     <!-- Vote Average -->
     <TextView
-        android:id="@+id/tv_label_vote_average"
+        android:id="@+id/fragment_details_label_vote_average"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Vote Average"
+        android:text="@string/vote_average"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-        app:layout_constraintEnd_toStartOf="@+id/tv_label_language"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_details_label_language"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvVoteAverage" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_details_vote_average" />
 
     <TextView
-        android:id="@+id/tvVoteAverage"
+        android:id="@+id/fragment_details_vote_average"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawablePadding="8dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-        app:layout_constraintEnd_toEndOf="@+id/tv_label_vote_average"
-        app:layout_constraintStart_toStartOf="@+id/tv_label_vote_average"
-        app:layout_constraintTop_toTopOf="@+id/tvReleaseDate"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_details_label_vote_average"
+        app:layout_constraintStart_toStartOf="@+id/fragment_details_label_vote_average"
+        app:layout_constraintTop_toTopOf="@+id/fragment_details_release_date"
         tools:text="7/10" />
 
     <!-- Release Date -->
     <TextView
-        android:id="@+id/tvReleaseDate"
+        android:id="@+id/fragment_details_release_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:drawablePadding="8dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-        app:layout_constraintEnd_toEndOf="@+id/tv_label_release_date"
-        app:layout_constraintStart_toStartOf="@+id/tv_label_release_date"
-        app:layout_constraintTop_toBottomOf="@+id/view_divider_top"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_details_label_release_date"
+        app:layout_constraintStart_toStartOf="@+id/fragment_details_label_release_date"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_details_divider_top"
         tools:text="@tools:sample/date/mmddyy" />
 
     <TextView
-        android:id="@+id/tv_label_release_date"
+        android:id="@+id/fragment_details_label_release_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Release date"
+        android:text="@string/release_date"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_label_language"
-        app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate" />
+        app:layout_constraintStart_toEndOf="@+id/fragment_details_label_language"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_details_release_date" />
 
     <!-- Language -->
     <TextView
-        android:id="@+id/tv_label_language"
+        android:id="@+id/fragment_details_label_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Language"
+        android:text="@string/language"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-        app:layout_constraintEnd_toStartOf="@+id/tv_label_release_date"
-        app:layout_constraintStart_toEndOf="@+id/tv_label_vote_average"
-        app:layout_constraintTop_toBottomOf="@+id/tvLanguage" />
+        app:layout_constraintEnd_toStartOf="@+id/fragment_details_label_release_date"
+        app:layout_constraintStart_toEndOf="@+id/fragment_details_label_vote_average"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_details_language" />
 
     <TextView
-        android:id="@+id/tvLanguage"
+        android:id="@+id/fragment_details_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawablePadding="8dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-        app:layout_constraintEnd_toEndOf="@+id/tv_label_language"
-        app:layout_constraintStart_toStartOf="@+id/tv_label_language"
-        app:layout_constraintTop_toTopOf="@+id/tvVoteAverage"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_details_label_language"
+        app:layout_constraintStart_toStartOf="@+id/fragment_details_label_language"
+        app:layout_constraintTop_toTopOf="@+id/fragment_details_vote_average"
         tools:text="En" />
 
     <View
-        android:id="@+id/view_divider_bottom"
+        android:id="@+id/fragment_details_divider_bottom"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_vote_average" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_details_label_vote_average" />
 
     <!-- Overview -->
     <TextView
-        android:id="@+id/tv_label_overview"
+        android:id="@+id/fragment_details_label_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Overview:"
+        android:text="@string/overview"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_divider_bottom" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_details_divider_bottom" />
 
     <TextView
-        android:id="@+id/tvOverview"
+        android:id="@+id/fragment_details_overview"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:padding="16dp"
@@ -162,7 +163,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_overview"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_details_label_overview"
         app:layout_constraintVertical_bias="0.0"
         tools:text="@tools:sample/lorem/random" />
 

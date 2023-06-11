@@ -3,32 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/discoverFragmentByPopularity">
+    app:startDestination="@id/discoverFragment">
 
     <fragment
-        android:id="@+id/discoverFragmentByPopularity"
+        android:id="@+id/discoverFragment"
         android:name="com.example.moviesapp.ui.discover.DiscoverMoviesFragment"
         android:label="DiscoverFragment"
         tools:layout="@layout/fragment_discover_movies">
-        <argument
-            android:name="sortBy"
-            app:argType="string"
-            android:defaultValue="popularity.desc" />
         <action
-            android:id="@+id/action_discoverFragmentByPopularity_to_detailsFragment"
+            android:id="@+id/action_discoverFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
-    </fragment>
-
-    <!-- TODO: add destination to this one    -->
-    <fragment
-        android:id="@+id/discoverFragmentByVoteAverage"
-        android:name="com.example.moviesapp.ui.discover.DiscoverMoviesFragment"
-        android:label="DiscoverFragment"
-        tools:layout="@layout/fragment_discover_movies">
-        <argument
-            android:name="sortBy"
-            app:argType="string"
-            android:defaultValue="vote_average.desc" />
     </fragment>
 
     <fragment

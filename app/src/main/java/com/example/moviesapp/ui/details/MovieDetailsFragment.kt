@@ -55,12 +55,12 @@ class MovieDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ivPoster = view.findViewById(R.id.ivPoster)
-        tvOriginalTitle = view.findViewById(R.id.tvOriginalTitle)
-        tvReleaseDate = view.findViewById(R.id.tvReleaseDate)
-        tvVoteAverage = view.findViewById(R.id.tvVoteAverage)
-        tvOverview = view.findViewById(R.id.tvOverview)
-        tvLanguage = view.findViewById(R.id.tvLanguage)
+        ivPoster = view.findViewById(R.id.fragment_details_poster)
+        tvOriginalTitle = view.findViewById(R.id.fragment_details_title)
+        tvReleaseDate = view.findViewById(R.id.fragment_details_release_date)
+        tvVoteAverage = view.findViewById(R.id.fragment_details_vote_average)
+        tvOverview = view.findViewById(R.id.fragment_details_overview)
+        tvLanguage = view.findViewById(R.id.fragment_details_language)
 
         initViewModelInteractions()
     }

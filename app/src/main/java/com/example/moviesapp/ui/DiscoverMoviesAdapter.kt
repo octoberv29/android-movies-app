@@ -44,9 +44,9 @@ class DiscoverMoviesAdapter(
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         // TODO: add accessibility description
-        private val ivThumbnail: ImageView = itemView.findViewById(R.id.ivThumbnail)
-        private val tvOriginalTitle: TextView = itemView.findViewById(R.id.tvOriginalTitle)
-        private val tvVoteAverage: TextView = itemView.findViewById(R.id.tvVoteAverage)
+        private val ivThumbnail: ImageView = itemView.findViewById(R.id.movie_item_poster)
+        private val tvOriginalTitle: TextView = itemView.findViewById(R.id.movie_item_title)
+        private val tvVoteAverage: TextView = itemView.findViewById(R.id.movie_item_vote_average)
 
         fun bind(movie: Movie) {
             // accessibility

@@ -15,36 +15,34 @@ import com.example.moviesapp.R
 import com.example.moviesapp.di.MoviesApplication
 import com.example.moviesapp.ui.DiscoverMoviesAdapter
 import com.example.moviesapp.ui.discover.di.DaggerDiscoverMoviesFragmentComponent
-import com.example.moviesapp.utils.Constants
 import javax.inject.Inject
 
 class DiscoverMoviesFragment : Fragment() {
 
-    private lateinit var sortBy: String
-    private lateinit var discoverMoviesAdapter: DiscoverMoviesAdapter
-
     private lateinit var rvMovies: RecyclerView
+    private lateinit var discoverMoviesAdapter: DiscoverMoviesAdapter
 
     @Inject
     lateinit var viewModelFactory: DiscoverMoviesViewModel.Companion.DiscoverMoviesViewModelFactory
     private val viewModel: DiscoverMoviesViewModel by viewModels { viewModelFactory }
 
     companion object  {
-        private const val NUMBER_OF_COLUMNS = 3
-        private const val SORT_BY_KEY = "sortBy"
         private const val DEFAULT_SORTING = "popularity.desc"
+        private const val DEFAULT_START_PAGE = 1
+        private const val NUMBER_OF_COLUMNS = 3
+        private const val DEFAULT_DISCOVER_MOVIES_APPBAR_TITLE = "Discover Popular Movies"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // inject
+        injectComponent()
+    }
 
+    private fun injectComponent() {
         DaggerDiscoverMoviesFragmentComponent.builder()
             .appComponent((context?.applicationContext as MoviesApplication).appComponent)
             .build()
             .inject(this)
-
-        sortBy = arguments?.getString(SORT_BY_KEY, Constants.EMPTY_STRING) ?: DEFAULT_SORTING
     }
 
     override fun onCreateView(
@@ -62,11 +60,15 @@ class DiscoverMoviesFragment : Fragment() {
         discoverMoviesAdapter = DiscoverMoviesAdapter(this::onMovieClick)
         rvMovies.adapter = discoverMoviesAdapter
 
+        // TODO; magic string
+        activity?.actionBar?.title = DEFAULT_DISCOVER_MOVIES_APPBAR_TITLE
+        
+
         initViewModelInteractions()
     }
 
     private fun initViewModelInteractions() {
-        viewModel.initTrending(sortBy, 1)
+        viewModel.initDiscovering(DEFAULT_SORTING, DEFAULT_START_PAGE)
 
         viewModel.discoverMoviesUiState.observe(viewLifecycleOwner) { state ->
             // TODO: do we really want thi logic here?
@@ -97,6 +99,6 @@ class DiscoverMoviesFragment : Fragment() {
 
     private fun onMovieClick(movieId: Int) {
         val bundle = bundleOf("movie_id" to movieId)
-        findNavController().navigate(R.id.action_discoverFragmentByPopularity_to_detailsFragment, bundle)
+        findNavController().navigate(R.id.action_discoverFragment_to_detailsFragment, bundle)
     }
 }

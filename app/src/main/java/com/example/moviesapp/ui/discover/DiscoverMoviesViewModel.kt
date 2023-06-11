@@ -27,7 +27,7 @@ class DiscoverMoviesViewModel(
         get() = _discoverMoviesUiState
 
 
-    fun initTrending(sortBy: String, page: Int) {
+    fun initDiscovering(sortBy: String, page: Int) {
         moviesDisposable = moviesRepository.getMoviesRx(sortBy, page)
             .subscribe(
                 this::handleMovies,
