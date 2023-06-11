@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Movies App</string>
+
+    <!-- Menu main -->
+    <string name="action_sort_by">Sort by</string>
+    <string name="action_popular_movies">Popular</string>
+    <string name="action_top_rated">Top Rated</string>
+    <string name="error">Error</string>
+    <string name="error_message">Network Error has occurred. Please try again later.</string>
+    <string name="error_general">Sorry, error has occurred!</string>
+    <string name="ok">OK</string>
+    <string name="trending">Trending</string>
 </resources>

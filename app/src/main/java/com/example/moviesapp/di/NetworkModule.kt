@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.moviesapp.data.MoviesRepository
 import com.example.moviesapp.data.MoviesRepositoryImp
 import com.example.moviesapp.data.network.MovieApi
+import com.example.moviesapp.utils.Constants
 import dagger.Module
 import dagger.Provides
 import okhttp3.HttpUrl
@@ -17,10 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-class NetworkModule(val application: Application) {
-
-    // TODO: base_url magi string
-    val BASE_URL = "https://api.themoviedb.org/3/"
+class NetworkModule(private val application: Application) {
 
     @Provides
     @Singleton
@@ -30,7 +28,7 @@ class NetworkModule(val application: Application) {
     @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)
