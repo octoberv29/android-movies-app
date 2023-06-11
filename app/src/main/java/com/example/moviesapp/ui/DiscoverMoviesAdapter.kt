@@ -12,7 +12,9 @@ import com.example.moviesapp.R
 import com.example.moviesapp.data.network.Movie
 import com.example.moviesapp.utils.Constants
 
-class DiscoverMoviesAdapter : RecyclerView.Adapter<DiscoverMoviesAdapter.MovieViewHolder>() {
+class DiscoverMoviesAdapter(
+    private val onMovieClicked: (Int) -> Unit
+) : RecyclerView.Adapter<DiscoverMoviesAdapter.MovieViewHolder>() {
 
     private var movies = listOf<Movie>()
 
@@ -24,6 +26,8 @@ class DiscoverMoviesAdapter : RecyclerView.Adapter<DiscoverMoviesAdapter.MovieVi
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie: Movie = movies[position]
+        // TODO: fix !!
+        holder.itemView.setOnClickListener { onMovieClicked(movie.id!!) }
         holder.bind(movie)
     }
 
@@ -53,7 +57,6 @@ class DiscoverMoviesAdapter : RecyclerView.Adapter<DiscoverMoviesAdapter.MovieVi
                 .into(ivThumbnail)
             tvOriginalTitle.text = movie.originalTitle
             tvVoteAverage.text = movie.voteAverage.toString()
-            // TODO: set click listener
         }
     }
 }

@@ -74,7 +74,7 @@ class DiscoverMoviesViewModel(
 
     companion object {
         @Suppress("UNCHECKED_CAST")
-        class DiscoverViewModelFactory @Inject constructor(
+        class DiscoverMoviesViewModelFactory @Inject constructor(
             private val moviesRepository: MoviesRepository
         ) : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {

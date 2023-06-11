@@ -6,13 +6,13 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class DiscoverFragmentModule {
+class DiscoverMoviesFragmentModule {
 
     @Provides
-    @DiscoverFragmentScope
+    @DiscoverMoviesFragmentScope
     fun provideDiscoverViewModelFactory(
         moviesRepository: MoviesRepository
-    ): DiscoverMoviesViewModel.Companion.DiscoverViewModelFactory {
-        return DiscoverMoviesViewModel.Companion.DiscoverViewModelFactory(moviesRepository)
+    ): DiscoverMoviesViewModel.Companion.DiscoverMoviesViewModelFactory {
+        return DiscoverMoviesViewModel.Companion.DiscoverMoviesViewModelFactory(moviesRepository)
     }
 }

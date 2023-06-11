@@ -5,18 +5,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesapp.R
 import com.example.moviesapp.di.MoviesApplication
 import com.example.moviesapp.ui.DiscoverMoviesAdapter
-import com.example.moviesapp.ui.discover.di.DaggerDiscoverFragmentComponent
+import com.example.moviesapp.ui.discover.di.DaggerDiscoverMoviesFragmentComponent
 import com.example.moviesapp.utils.Constants
 import javax.inject.Inject
 
-class DiscoverFragment : Fragment() {
+class DiscoverMoviesFragment : Fragment() {
 
     private lateinit var sortBy: String
     private lateinit var discoverMoviesAdapter: DiscoverMoviesAdapter
@@ -24,7 +26,7 @@ class DiscoverFragment : Fragment() {
     private lateinit var rvMovies: RecyclerView
 
     @Inject
-    lateinit var viewModelFactory: DiscoverMoviesViewModel.Companion.DiscoverViewModelFactory
+    lateinit var viewModelFactory: DiscoverMoviesViewModel.Companion.DiscoverMoviesViewModelFactory
     private val viewModel: DiscoverMoviesViewModel by viewModels { viewModelFactory }
 
     companion object  {
@@ -37,7 +39,7 @@ class DiscoverFragment : Fragment() {
         super.onCreate(savedInstanceState)
         // inject
 
-        DaggerDiscoverFragmentComponent.builder()
+        DaggerDiscoverMoviesFragmentComponent.builder()
             .appComponent((context?.applicationContext as MoviesApplication).appComponent)
             .build()
             .inject(this)
@@ -57,9 +59,13 @@ class DiscoverFragment : Fragment() {
         rvMovies = view.findViewById(R.id.discover_movies_recycler_view_movies)
         rvMovies.layoutManager = GridLayoutManager(activity, NUMBER_OF_COLUMNS)
         rvMovies.setHasFixedSize(true)
-        discoverMoviesAdapter = DiscoverMoviesAdapter()
+        discoverMoviesAdapter = DiscoverMoviesAdapter(this::onMovieClick)
         rvMovies.adapter = discoverMoviesAdapter
 
+        initViewModelInteractions()
+    }
+
+    private fun initViewModelInteractions() {
         viewModel.initTrending(sortBy, 1)
 
         viewModel.discoverMoviesUiState.observe(viewLifecycleOwner) { state ->
@@ -87,5 +93,10 @@ class DiscoverFragment : Fragment() {
     private fun showEmptyView() {
         // TODO: show empty view
         // do nothing for now
+    }
+
+    private fun onMovieClick(movieId: Int) {
+        val bundle = bundleOf("movie_id" to movieId)
+        findNavController().navigate(R.id.action_discoverFragmentByPopularity_to_detailsFragment, bundle)
     }
 }
