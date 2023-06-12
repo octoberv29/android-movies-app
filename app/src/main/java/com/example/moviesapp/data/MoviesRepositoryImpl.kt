@@ -1,20 +1,37 @@
 package com.example.moviesapp.data
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.rxjava2.flowable
 import com.example.moviesapp.data.network.Movie
 import com.example.moviesapp.data.network.MovieApi
+import com.example.moviesapp.data.network.MovieResponse
+import com.example.moviesapp.data.paging.GetMoviesRxPagingSource
+import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
-class MoviesRepositoryImp @Inject constructor(
-    private val retrofitService: MovieApi
+class MoviesRepositoryImp(
+    private val retrofitService: MovieApi,
+    private val getMoviesRxPagingSource: GetMoviesRxPagingSource
 ): MoviesRepository {
 
-    override fun getMoviesRx(sortBy: String?, page: Int): Single<List<Movie>?> {
-        return retrofitService.getMoviesRx(sortBy, page)
+    override fun getMoviesRx(): Flowable<PagingData<Movie>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = true,
+                maxSize = 30,
+                prefetchDistance = 5,
+                initialLoadSize = 40
+            ),
+            pagingSourceFactory = { getMoviesRxPagingSource }
+        ).flowable
             .subscribeOn(Schedulers.io())
-            .map { it.movies }
             .observeOn(AndroidSchedulers.mainThread())
     }
 

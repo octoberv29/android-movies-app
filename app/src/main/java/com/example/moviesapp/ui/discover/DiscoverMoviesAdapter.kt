@@ -1,22 +1,36 @@
-package com.example.moviesapp.ui
+package com.example.moviesapp.ui.discover
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviesapp.R
 import com.example.moviesapp.data.network.Movie
 import com.example.moviesapp.utils.Constants
 
+/**
+ * DiscoverMoviesAdapter is PagingDataAdapter used to show a list of movies on DiscoverMoviesFragment
+ */
 class DiscoverMoviesAdapter(
     private val onMovieClicked: (Int) -> Unit
-) : RecyclerView.Adapter<DiscoverMoviesAdapter.MovieViewHolder>() {
+) : PagingDataAdapter<Movie, DiscoverMoviesAdapter.MovieViewHolder>(COMPARATOR) {
 
-    private var movies = listOf<Movie>()
+    companion object {
+        private val COMPARATOR = object : DiffUtil.ItemCallback<Movie>() {
+            override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -25,37 +39,30 @@ class DiscoverMoviesAdapter(
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie: Movie = movies[position]
-        // TODO: fix !!
-        holder.itemView.setOnClickListener { onMovieClicked(movie.id!!) }
-        holder.bind(movie)
-    }
-
-    override fun getItemCount(): Int {
-        return movies.size
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setMovies(movies: List<Movie>) {
-        this.movies = movies
-        notifyDataSetChanged()
+        val movie: Movie? = getItem(position)
+        movie?.let {
+            holder.bind(movie)
+            holder.itemView.setOnClickListener {
+                movie.id?.let { movieId ->
+                    onMovieClicked(movieId)
+                }
+            }
+        }
     }
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        // TODO: add accessibility description
-        private val ivThumbnail: ImageView = itemView.findViewById(R.id.movie_item_poster)
+        private val ivPoster: ImageView = itemView.findViewById(R.id.movie_item_poster)
         private val tvOriginalTitle: TextView = itemView.findViewById(R.id.movie_item_title)
         private val tvVoteAverage: TextView = itemView.findViewById(R.id.movie_item_vote_average)
 
         fun bind(movie: Movie) {
             // accessibility
-            itemView.contentDescription = movie.originalTitle
+            itemView.contentDescription = movie.title
             // views
             Glide.with(itemView.context)
                 .load(Constants.IMAGE_URL + movie.posterPath)
-                .into(ivThumbnail)
-            tvOriginalTitle.text = movie.originalTitle
+                .into(ivPoster)
+            tvOriginalTitle.text = movie.title
             tvVoteAverage.text = movie.voteAverage.toString()
         }
     }

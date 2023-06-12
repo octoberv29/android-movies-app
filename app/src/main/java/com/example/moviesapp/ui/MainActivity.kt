@@ -7,6 +7,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.moviesapp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * MainActivity is the key activity of the app and it holds navHostFragment
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

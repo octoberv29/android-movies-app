@@ -9,7 +9,7 @@ interface MovieApi {
 
     @GET("discover/movie")
     fun getMoviesRx(
-        @Query("sort_by") sortBy: String?,
+        @Query("sort_by") sortBy: String,
         @Query("page") page: Int
     ): Single<MovieResponse>
 

@@ -9,15 +9,19 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
+/**
+ * MovieDetailsUIState is a UI state for the MovieDetailsViewModel
+ */
 data class MovieDetailsUIState(
     val movie: Movie?,
     val isLoading: Boolean,
     val isError: Boolean
 )
 
+/**
+ * MovieDetailsViewModel is a ViewModel associated with a MovieDetailsFragment
+ */
 class MovieDetailsViewModel(
-    // TODO: use savedStateHandle
-    private val savedStateHandle: SavedStateHandle,
     private val moviesRepository: MoviesRepository
 ) : ViewModel() {
 
@@ -27,8 +31,7 @@ class MovieDetailsViewModel(
 
     private var getMovieDetailDisposable: Disposable? = null
 
-    // TODO: implement loading state
-    fun init(movieId: Int) {
+    fun initDetailsFetch(movieId: Int) {
         _movieDetailsUIState.value = MovieDetailsUIState(
             movie = null,
             isLoading = true,
@@ -57,14 +60,12 @@ class MovieDetailsViewModel(
     }
 
     private fun handleError(t: Throwable) {
-        // TODO: use t
         _movieDetailsUIState.value = MovieDetailsUIState(
             movie = null,
             isLoading = false,
             isError = true
         )
     }
-
 
     override fun onCleared() {
         super.onCleared()
@@ -77,9 +78,7 @@ class MovieDetailsViewModel(
             private val moviesRepository: MoviesRepository,
         ) : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
-                val savedStateHandle = extras.createSavedStateHandle()
                 return MovieDetailsViewModel(
-                    savedStateHandle,
                     moviesRepository
                 ) as T
             }

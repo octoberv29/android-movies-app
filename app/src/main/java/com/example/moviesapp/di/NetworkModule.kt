@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.moviesapp.data.MoviesRepository
 import com.example.moviesapp.data.MoviesRepositoryImp
 import com.example.moviesapp.data.network.MovieApi
+import com.example.moviesapp.data.paging.GetMoviesRxPagingSource
 import com.example.moviesapp.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -68,9 +69,18 @@ class NetworkModule(private val application: Application) {
     fun provideMovieApi(retrofit: Retrofit): MovieApi =
         retrofit.create(MovieApi::class.java)
 
+    @Provides
+    @Singleton
+    fun provideGetMoviesPagingSource(
+        movieApi: MovieApi,
+    ): GetMoviesRxPagingSource =
+        GetMoviesRxPagingSource(movieApi)
 
     @Provides
     @Singleton
-    fun provideRepository(movieApi: MovieApi): MoviesRepository =
-        MoviesRepositoryImp(movieApi)
+    fun provideRepository(
+        movieApi: MovieApi,
+        pagingSource: GetMoviesRxPagingSource
+    ): MoviesRepository =
+        MoviesRepositoryImp(movieApi, pagingSource)
 }
