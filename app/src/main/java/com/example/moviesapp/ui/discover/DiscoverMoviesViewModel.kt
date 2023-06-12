@@ -16,8 +16,7 @@ import javax.inject.Inject
 data class DiscoverMoviesUiState(
     val movies: PagingData<Movie>?,
     val isLoading: Boolean,
-    val isError: Boolean,
-    val errorMessage: String?
+    val isError: Boolean
 )
 
 /**
@@ -49,7 +48,6 @@ class DiscoverMoviesViewModel(
             movies = null,
             isLoading = true,
             isError = false,
-            errorMessage = null
         )
     }
 
@@ -58,17 +56,14 @@ class DiscoverMoviesViewModel(
             movies = data,
             isLoading = false,
             isError = false,
-            errorMessage = null
         )
     }
 
     private fun handleError(t: Throwable) {
-        // TODO: add message to the handle error
         _discoverMoviesUiState.value = DiscoverMoviesUiState(
             movies = null,
             isLoading = false,
             isError = true,
-            errorMessage = t.localizedMessage
         )
     }
 

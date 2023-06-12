@@ -36,7 +36,7 @@ class DiscoverMoviesFragment : Fragment() {
 
     companion object  {
         private const val DEFAULT_NUMBER_OF_COLUMNS = 3
-        const val DEFAULT_DISCOVER_MOVIES_APPBAR_TITLE = "Discover Popular Movies"
+        const val DEFAULT_DISCOVER_MOVIES_ACTION_BAR_TITLE = "Discover Popular Movies"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +60,7 @@ class DiscoverMoviesFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        (activity as MainActivity).supportActionBar?.title = DEFAULT_DISCOVER_MOVIES_APPBAR_TITLE
+        (activity as MainActivity).supportActionBar?.title = DEFAULT_DISCOVER_MOVIES_ACTION_BAR_TITLE
 
         progressBar = view.findViewById(R.id.fragment_discover_movies_progress_bar)
         rvMovies = view.findViewById(R.id.fragment_discover_movies_recycler_view_movies)

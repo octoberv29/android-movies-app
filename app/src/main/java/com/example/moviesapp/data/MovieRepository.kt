@@ -11,4 +11,6 @@ interface MoviesRepository {
     fun getMoviesRx(): Flowable<PagingData<Movie>>
 
     fun getMovieDetailsRx(id: Int): Single<Movie>
+
+    suspend fun searchMovieUsingQuery(searchTerm: String): List<Movie>?
 }

@@ -10,6 +10,7 @@
     <string name="error_message_for_missing_movie_id">Sorry, error has occurred!</string>
     <string name="ok">OK</string>
     <string name="trending">Trending</string>
+    <string name="search">Search</string>
     <string name="vote_average">Vote Average</string>
     <string name="release_date">Release date</string>
     <string name="overview">Overview</string>

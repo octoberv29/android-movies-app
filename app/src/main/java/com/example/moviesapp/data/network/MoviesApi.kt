@@ -17,4 +17,9 @@ interface MovieApi {
     fun getMovieDetailsRx(
         @Path("movie_id") id: Int
     ): Single<Movie>
+
+    @GET("search/movie")
+    suspend fun searchMovieUsingQuery(
+        @Query("query") searchTerm: String
+    ): MovieResponse
 }

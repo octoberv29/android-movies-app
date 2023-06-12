@@ -16,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class MoviesRepositoryImp(
-    private val retrofitService: MovieApi,
+    private val movieApiService: MovieApi,
     private val getMoviesRxPagingSource: GetMoviesRxPagingSource
 ): MoviesRepository {
 
@@ -36,9 +36,16 @@ class MoviesRepositoryImp(
     }
 
     override fun getMovieDetailsRx(id: Int): Single<Movie> {
-        return retrofitService.getMovieDetailsRx(id)
+        return movieApiService.getMovieDetailsRx(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override suspend fun searchMovieUsingQuery(searchTerm: String): List<Movie>? {
+        return withContext(Dispatchers.IO) {
+            val movieResponse = movieApiService.searchMovieUsingQuery(searchTerm)
+            movieResponse.listOfMovies
+        }
     }
 
 }

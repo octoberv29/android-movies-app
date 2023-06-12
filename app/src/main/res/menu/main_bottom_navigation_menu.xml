@@ -5,5 +5,9 @@
         android:enabled="true"
         android:icon="@drawable/ic_fire"
         android:title="@string/trending"/>
-    <!-- TODO: add more later -->
+    <item
+        android:id="@+id/searchMovieFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search"/>
 </menu>
