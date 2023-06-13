@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.moviesapp.R
-import com.example.moviesapp.di.MoviesApplication
+import com.example.moviesapp.data.di.MoviesApplication
 import com.example.moviesapp.ui.MainActivity
 import com.example.moviesapp.ui.search.di.DaggerSearchMovieFragmentComponent
 import javax.inject.Inject

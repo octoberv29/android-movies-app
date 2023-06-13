@@ -1,6 +1,6 @@
 package com.example.moviesapp.ui.details.di
 
-import com.example.moviesapp.di.AppComponent
+import com.example.moviesapp.data.di.AppComponent
 import com.example.moviesapp.ui.details.MovieDetailsFragment
 import dagger.Component
 

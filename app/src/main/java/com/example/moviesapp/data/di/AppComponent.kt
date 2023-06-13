@@ -1,4 +1,4 @@
-package com.example.moviesapp.di
+package com.example.moviesapp.data.di
 
 import com.example.moviesapp.data.MoviesRepository
 import dagger.Component

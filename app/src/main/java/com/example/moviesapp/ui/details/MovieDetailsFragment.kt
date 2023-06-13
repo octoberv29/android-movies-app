@@ -13,10 +13,10 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.moviesapp.R
 import com.example.moviesapp.data.network.Movie
-import com.example.moviesapp.di.MoviesApplication
+import com.example.moviesapp.data.di.MoviesApplication
 import com.example.moviesapp.ui.MainActivity
 import com.example.moviesapp.ui.details.di.DaggerMovieDetailsFragmentComponent
-import com.example.moviesapp.utils.Constants
+import com.example.moviesapp.ui.ConstantsUi
 import javax.inject.Inject
 
 /**
@@ -93,7 +93,7 @@ class MovieDetailsFragment : Fragment() {
     private fun showMovieDetails(movie: Movie) {
         (activity as MainActivity).supportActionBar?.title = movie.title
         Glide.with(this)
-            .load(Constants.IMAGE_URL + movie.posterPath)
+            .load(ConstantsUi.IMAGE_URL + movie.posterPath)
             .into(ivPoster)
         tvOriginalTitle.text = movie.title
         tvReleaseDate.text = movie.releaseDate

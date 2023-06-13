@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviesapp.R
 import com.example.moviesapp.data.network.Movie
-import com.example.moviesapp.utils.Constants
+import com.example.moviesapp.ui.ConstantsUi
 
 /**
  * DiscoverMoviesAdapter is PagingDataAdapter used to show a list of movies on DiscoverMoviesFragment
@@ -60,7 +60,7 @@ class DiscoverMoviesAdapter(
             itemView.contentDescription = movie.title
             // views
             Glide.with(itemView.context)
-                .load(Constants.IMAGE_URL + movie.posterPath)
+                .load(ConstantsUi.IMAGE_URL + movie.posterPath)
                 .into(ivPoster)
             tvOriginalTitle.text = movie.title
             tvVoteAverage.text = movie.voteAverage.toString()

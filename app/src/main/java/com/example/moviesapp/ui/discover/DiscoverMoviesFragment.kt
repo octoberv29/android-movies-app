@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesapp.R
 import com.example.moviesapp.data.network.Movie
-import com.example.moviesapp.di.MoviesApplication
+import com.example.moviesapp.data.di.MoviesApplication
 import com.example.moviesapp.ui.MainActivity
 import com.example.moviesapp.ui.discover.di.DaggerDiscoverMoviesFragmentComponent
 import javax.inject.Inject
@@ -63,7 +63,7 @@ class DiscoverMoviesFragment : Fragment() {
         (activity as MainActivity).supportActionBar?.title = DEFAULT_DISCOVER_MOVIES_ACTION_BAR_TITLE
 
         progressBar = view.findViewById(R.id.fragment_discover_movies_progress_bar)
-        rvMovies = view.findViewById(R.id.fragment_discover_movies_recycler_view_movies)
+        rvMovies = view.findViewById(R.id.fragment_discover_movies_recycler_view)
         rvMovies.layoutManager = GridLayoutManager(activity, DEFAULT_NUMBER_OF_COLUMNS)
         rvMovies.setHasFixedSize(true)
         discoverMoviesAdapter = DiscoverMoviesAdapter(this::onMovieClick)

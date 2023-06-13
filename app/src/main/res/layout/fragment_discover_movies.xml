@@ -6,7 +6,7 @@
     android:background="@color/colorPrimary">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragment_discover_movies_recycler_view_movies"
+        android:id="@+id/fragment_discover_movies_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,6 +21,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fragment_discover_movies_recycler_view_movies" />
+        app:layout_constraintTop_toTopOf="@+id/fragment_discover_movies_recycler_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

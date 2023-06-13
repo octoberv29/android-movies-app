@@ -1,11 +1,11 @@
-package com.example.moviesapp.di
+package com.example.moviesapp.data.di
 
 import android.app.Application
+import com.example.moviesapp.data.ConstantsData
 import com.example.moviesapp.data.MoviesRepository
 import com.example.moviesapp.data.MoviesRepositoryImp
 import com.example.moviesapp.data.network.MovieApi
 import com.example.moviesapp.data.paging.GetMoviesRxPagingSource
-import com.example.moviesapp.utils.Constants
 import dagger.Module
 import dagger.Provides
 import okhttp3.HttpUrl
@@ -29,7 +29,7 @@ class NetworkModule(private val application: Application) {
     @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(ConstantsData.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)
