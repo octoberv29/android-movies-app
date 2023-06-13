@@ -1,6 +1,6 @@
 package com.example.moviesapp.ui.search.di
 
-import com.example.moviesapp.data.MoviesRepository
+import com.example.moviesapp.data.repository.MoviesRepository
 import com.example.moviesapp.ui.search.SearchMovieViewModel
 import dagger.Module
 import dagger.Provides

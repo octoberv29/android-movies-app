@@ -2,8 +2,8 @@ package com.example.moviesapp.data.di
 
 import android.app.Application
 import com.example.moviesapp.data.ConstantsData
-import com.example.moviesapp.data.MoviesRepository
-import com.example.moviesapp.data.MoviesRepositoryImp
+import com.example.moviesapp.data.repository.MoviesRepository
+import com.example.moviesapp.data.repository.MoviesRepositoryImp
 import com.example.moviesapp.data.network.MovieApi
 import com.example.moviesapp.data.paging.GetMoviesRxPagingSource
 import dagger.Module

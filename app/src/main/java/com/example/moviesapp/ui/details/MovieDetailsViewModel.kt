@@ -2,7 +2,7 @@ package com.example.moviesapp.ui.details
 
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.example.moviesapp.data.MoviesRepository
+import com.example.moviesapp.data.repository.MoviesRepository
 import com.example.moviesapp.data.network.Movie
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable

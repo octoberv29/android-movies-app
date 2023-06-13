@@ -1,8 +1,7 @@
-package com.example.moviesapp.data
+package com.example.moviesapp.data.repository
 
 import androidx.paging.PagingData
 import com.example.moviesapp.data.network.Movie
-import com.example.moviesapp.data.network.MovieResponse
 import io.reactivex.Flowable
 import io.reactivex.Single
 

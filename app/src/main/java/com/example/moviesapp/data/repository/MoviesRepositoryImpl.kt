@@ -1,4 +1,4 @@
-package com.example.moviesapp.data
+package com.example.moviesapp.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -6,7 +6,6 @@ import androidx.paging.PagingData
 import androidx.paging.rxjava2.flowable
 import com.example.moviesapp.data.network.Movie
 import com.example.moviesapp.data.network.MovieApi
-import com.example.moviesapp.data.network.MovieResponse
 import com.example.moviesapp.data.paging.GetMoviesRxPagingSource
 import io.reactivex.Flowable
 import io.reactivex.Single

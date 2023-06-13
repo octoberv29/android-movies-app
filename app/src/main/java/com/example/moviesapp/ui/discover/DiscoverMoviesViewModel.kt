@@ -4,7 +4,7 @@ import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.paging.PagingData
 import androidx.paging.rxjava2.cachedIn
-import com.example.moviesapp.data.MoviesRepository
+import com.example.moviesapp.data.repository.MoviesRepository
 import com.example.moviesapp.data.network.Movie
 import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.ExperimentalCoroutinesApi

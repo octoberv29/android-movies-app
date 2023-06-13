@@ -2,7 +2,7 @@ package com.example.moviesapp.ui.search
 
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.example.moviesapp.data.MoviesRepository
+import com.example.moviesapp.data.repository.MoviesRepository
 import com.example.moviesapp.data.network.Movie
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,6 +1,6 @@
 package com.example.moviesapp.data.di
 
-import com.example.moviesapp.data.MoviesRepository
+import com.example.moviesapp.data.repository.MoviesRepository
 import dagger.Component
 import javax.inject.Singleton
 
