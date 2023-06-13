@@ -15,4 +15,6 @@
     <string name="release_date">Release date</string>
     <string name="overview">Overview</string>
     <string name="language">Language</string>
+    <string name="search_results">Search Results</string>
+    <string name="type_your_search_term_here">type your search term here</string>
 </resources>

@@ -1,7 +1,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/movie_item_content"
+    android:id="@+id/discover_movie_item_content"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
@@ -20,7 +20,7 @@
 
         <!-- accessibility for the block is set programmatically in the adapter -->
         <ImageView
-            android:id="@+id/movie_item_poster"
+            android:id="@+id/discover_movie_item_poster"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:adjustViewBounds="true"
@@ -34,7 +34,7 @@
             tools:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/movie_item_title"
+            android:id="@+id/discover_movie_item_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="8dp"
@@ -49,12 +49,12 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/movie_item_poster"
+            card_view:layout_constraintTop_toBottomOf="@+id/discover_movie_item_poster"
             card_view:layout_constraintVertical_bias="0.0"
             tools:text="@tools:sample/lorem" />
 
         <TextView
-            android:id="@+id/movie_item_vote_average"
+            android:id="@+id/discover_movie_item_vote_average"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="4dp"
@@ -69,7 +69,7 @@
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/movie_item_title"
+            card_view:layout_constraintTop_toBottomOf="@+id/discover_movie_item_title"
             tools:text="7.5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

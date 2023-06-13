@@ -12,7 +12,6 @@ import javax.inject.Inject
  */
 data class SearchMovieUIState(
     val movies: List<Movie>?,
-    val isEmpty: Boolean,
     val isLoading: Boolean,
     val isError: Boolean
 )
@@ -29,28 +28,23 @@ class SearchMovieViewModel(
         get() = _searchMovieUIState
 
     fun initSearch(searchTerm: String) {
+        handleLoading()
         try {
-            handleLoading()
             viewModelScope.launch {
-                val movies = moviesRepository.searchMovieUsingQuery(searchTerm)
+                val movies = if (searchTerm.isNotBlank()) {
+                    moviesRepository.searchMovieUsingQuery(searchTerm)
+                } else {
+                    emptyList()
+                }
                 if (movies == null) {
                     _searchMovieUIState.value = SearchMovieUIState(
                         movies = null,
-                        isEmpty = false,
                         isLoading = false,
                         isError = true
-                    )
-                } else if (movies.isEmpty()) {
-                    _searchMovieUIState.value = SearchMovieUIState(
-                        movies = null,
-                        isEmpty = true,
-                        isLoading = false,
-                        isError = false
                     )
                 } else {
                     _searchMovieUIState.value = SearchMovieUIState(
                         movies = movies,
-                        isEmpty = false,
                         isLoading = false,
                         isError = false
                     )
@@ -59,7 +53,6 @@ class SearchMovieViewModel(
         } catch (t: Throwable) {
             _searchMovieUIState.value = SearchMovieUIState(
                 movies = null,
-                isEmpty = false,
                 isLoading = false,
                 isError = true
             )
@@ -69,7 +62,6 @@ class SearchMovieViewModel(
     private fun handleLoading() {
         _searchMovieUIState.value = SearchMovieUIState(
             movies = null,
-            isEmpty = false,
             isLoading = true,
             isError = false
         )

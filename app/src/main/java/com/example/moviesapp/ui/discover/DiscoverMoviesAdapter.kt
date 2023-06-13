@@ -34,7 +34,7 @@ class DiscoverMoviesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val itemView = layoutInflater.inflate(R.layout.movie_item, parent, false)
+        val itemView = layoutInflater.inflate(R.layout.discover_movie_item, parent, false)
         return MovieViewHolder(itemView)
     }
 
@@ -51,9 +51,9 @@ class DiscoverMoviesAdapter(
     }
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val ivPoster: ImageView = itemView.findViewById(R.id.movie_item_poster)
-        private val tvOriginalTitle: TextView = itemView.findViewById(R.id.movie_item_title)
-        private val tvVoteAverage: TextView = itemView.findViewById(R.id.movie_item_vote_average)
+        private val ivPoster: ImageView = itemView.findViewById(R.id.discover_movie_item_poster)
+        private val tvOriginalTitle: TextView = itemView.findViewById(R.id.discover_movie_item_title)
+        private val tvVoteAverage: TextView = itemView.findViewById(R.id.discover_movie_item_vote_average)
 
         fun bind(movie: Movie) {
             // accessibility
