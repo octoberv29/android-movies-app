@@ -4,21 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/fragment_search_search_edit_text"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_search_search_text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="@string/type_your_search_term_here"
-        android:inputType="text"
-        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:autofillHints="search term" />
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="@string/type_your_search_term_here"
+            android:id="@+id/fragment_search_search_text_input_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/fragment_search_search_results_label"
@@ -28,9 +32,9 @@
         android:padding="4dp"
         android:text="@string/search_results"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/fragment_search_search_edit_text"
-        app:layout_constraintStart_toStartOf="@+id/fragment_search_search_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_search_search_edit_text"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_search_search_text_input_layout"
+        app:layout_constraintStart_toStartOf="@+id/fragment_search_search_text_input_layout"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_search_search_text_input_layout"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
