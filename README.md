@@ -1,5 +1,18 @@
 # android-movies-app
 
+## Brief Summary of the app
+
+This app is designed for helping users to discover movies. It uses themoviedb's APIs to fetch movie data. It has three core screens that provide the following functionality: a list of popular movies, details about a specific movie, and a search function for finding a movie by name.
+
+### List of key libraries used
+
+- Android Architecture Components (ViewModel, LiveData, Paging, Navigation Graph, etc)
+- Dagger
+- RxJava
+- Kotlin Coroutines and StateFlow
+- Retrofit
+- JUnit, Mockk, Espresso
+
 ### Engineering practices used
 
 This list includes some of the recommended engineering practices I used while implementing the app to demonstrate performance, readability, maintainability, testability, scalability, and simplicity:
