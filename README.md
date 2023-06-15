@@ -24,6 +24,7 @@ This list includes some of the recommended engineering practices I used while im
 1. Implemented MVVM architecture while following some of the  principles of Clean Architecture.
 2. Used clearly defined data and ui layers with corresponding package names.
 3. Used Dagger for dependency injection and used different scopes when it was needed.
+4. Used RxJava on discover and details functionality and Kotlin Coroutines on search functionality for network operations. Usually I would use only one technology, but to showcase the knowledge of both I decided to build different functionalities on different technologies.
 
 data:
 
@@ -39,9 +40,8 @@ ui:
 3. All ViewModels don’t include references to android specific classes like Application, Context, Resources, etc.
 4. Used lifecycle-aware UI state collection: LiveData for discovering movies and movie details screens and StateFlow for the search movie screen.
 5. Used a single Activity application in combination with a Navigation Graph.
-6. Used RxJava on discover and details functionality and Kotlin Coroutines on search functionality for network operations. Usually I would use only one technology, but to showcase the knowledge of both I decided to build different functionalities on different technologies.
-7. For the ViewModels that utilised RxJava for networking operations cleared disposables in the onClear method and for ViewModel that used Coroutines used viewModelScope.
-8. For showing movies data on discover screen used Paging 3 library provided in Android Architecture Component (AAC).
+6. For the ViewModels that utilised RxJava for networking operations cleared disposables in the onClear method and for ViewModel that used Coroutines used viewModelScope.
+7. For showing movies data on discover screen used Paging 3 library provided in Android Architecture Component (AAC).
 
 tests:
 
