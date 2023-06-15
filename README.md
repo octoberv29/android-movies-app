@@ -4,10 +4,9 @@
 
 This app is designed for helping users to discover movies. It uses themoviedb's APIs to fetch movie data. It has three core screens that provide the following functionality: a list of popular movies, details about a specific movie, and a search function for finding a movie by name. 
 
-![IMAGE 2023-06-15 15:53:59](https://github.com/octoberv29/android-movies-app/assets/47453811/06000f72-c8ce-4c0f-962b-97d7043b83a5)
-![IMAGE 2023-06-15 15:54:32](https://github.com/octoberv29/android-movies-app/assets/47453811/f011bac9-674a-4ece-95b6-f1348e1dea56)
-![IMAGE 2023-06-15 15:54:43](https://github.com/octoberv29/android-movies-app/assets/47453811/e0027a2a-e226-44fb-b5a1-59fe77b0c418)
-
+<img src="https://github.com/octoberv29/android-movies-app/assets/47453811/06000f72-c8ce-4c0f-962b-97d7043b83a5" width="250" alt="" title="" />
+<img src="https://github.com/octoberv29/android-movies-app/assets/47453811/f011bac9-674a-4ece-95b6-f1348e1dea56" width="250" alt="" title="" />
+<img src="https://github.com/octoberv29/android-movies-app/assets/47453811/e0027a2a-e226-44fb-b5a1-59fe77b0c418" width="250" alt="" title="" />
 
 ### List of key libraries used
 
