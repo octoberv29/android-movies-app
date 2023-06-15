@@ -5,12 +5,14 @@ import androidx.paging.rxjava2.RxPagingSource
 import com.example.moviesapp.data.network.Movie
 import com.example.moviesapp.data.network.MovieApi
 import com.example.moviesapp.data.network.MovieResponse
+import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 
 
 class GetMoviesRxPagingSource(
-    private val service: MovieApi
+    private val movieApiService: MovieApi,
+    private val ioScheduler: Scheduler = Schedulers.io(),
 ) : RxPagingSource<Int, Movie>() {
 
     companion object {
@@ -20,8 +22,8 @@ class GetMoviesRxPagingSource(
 
     override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, Movie>> {
         val position = params.key ?: DEFAULT_START_PAGE
-        return service.getMoviesRx(DEFAULT_SORTING, position)
-            .subscribeOn(Schedulers.io())
+        return movieApiService.getMoviesRx(DEFAULT_SORTING, position)
+            .subscribeOn(ioScheduler)
             .map { toLoadResult(it, position) }
             .onErrorReturn {
                 LoadResult.Error(it)

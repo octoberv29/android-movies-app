@@ -14,12 +14,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.CoroutineContext
 
 class MoviesRepositoryImpl(
     private val movieApiService: MovieApi,
     private val getMoviesRxPagingSource: GetMoviesRxPagingSource,
     private val ioScheduler: Scheduler = Schedulers.io(),
-    private val mainThreadScheduler: Scheduler = AndroidSchedulers.mainThread()
+    private val mainThreadScheduler: Scheduler = AndroidSchedulers.mainThread(),
+    private val ioDispatcher: CoroutineContext = Dispatchers.IO
 ): MoviesRepository {
 
     override fun getMoviesRx(): Flowable<PagingData<Movie>> {
@@ -44,7 +46,7 @@ class MoviesRepositoryImpl(
     }
 
     override suspend fun searchMovieUsingQuery(searchTerm: String): List<Movie>? {
-        return withContext(Dispatchers.IO) {
+        return withContext(ioDispatcher) {
             val movieResponse = movieApiService.searchMovieUsingQuery(searchTerm)
             movieResponse.listOfMovies
         }

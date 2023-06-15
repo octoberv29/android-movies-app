@@ -40,35 +40,38 @@ class SearchMovieViewModel(
                     emptyList()
                 }
                 if (movies == null) {
-                    _searchMovieUIState.update { currentState ->
-                        currentState.copy(
-                            isLoading = false,
-                            isError = true
-                        )
-                    }
+                    handleError()
                 } else {
-                    _searchMovieUIState.update { currentState ->
-                        currentState.copy(
-                            movies = movies,
-                            isLoading = false
-                        )
-                    }
+                    handleMovies(movies)
                 }
             }
         } catch (e: Exception) {
-            _searchMovieUIState.update { currentState ->
-                currentState.copy(
-                    isLoading = false,
-                    isError = true
-                )
-            }
+            handleError()
         }
     }
 
-    private fun handleLoading() {
+    internal fun handleMovies(movies: List<Movie>) {
+        _searchMovieUIState.update { currentState ->
+            currentState.copy(
+                movies = movies,
+                isLoading = false
+            )
+        }
+    }
+
+    internal fun handleLoading() {
         _searchMovieUIState.update { currentState ->
             currentState.copy(
                 isLoading = true
+            )
+        }
+    }
+
+    internal fun handleError() {
+        _searchMovieUIState.update { currentState ->
+            currentState.copy(
+                isLoading = false,
+                isError = true
             )
         }
     }

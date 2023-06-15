@@ -43,7 +43,7 @@ class DiscoverMoviesViewModel(
             )
     }
 
-    private fun handleLoading() {
+    internal fun handleLoading() {
         _discoverMoviesUiState.value = DiscoverMoviesUiState(
             movies = null,
             isLoading = true,
@@ -51,7 +51,7 @@ class DiscoverMoviesViewModel(
         )
     }
 
-    private fun handleMovies(data: PagingData<Movie>) {
+    internal fun handleMovies(data: PagingData<Movie>) {
         _discoverMoviesUiState.value = DiscoverMoviesUiState(
             movies = data,
             isLoading = false,
@@ -59,7 +59,7 @@ class DiscoverMoviesViewModel(
         )
     }
 
-    private fun handleError(t: Throwable) {
+    internal fun handleError(t: Throwable) {
         _discoverMoviesUiState.value = DiscoverMoviesUiState(
             movies = null,
             isLoading = false,
