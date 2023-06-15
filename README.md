@@ -15,7 +15,7 @@ This app is designed for helping users to discover movies. It uses themoviedb's 
 - RxJava
 - Kotlin Coroutines and StateFlow
 - Retrofit
-- JUnit, Mockk, Espresso
+- JUnit, Mockk
 
 ### Engineering practices used
 
@@ -46,11 +46,10 @@ ui:
 tests:
 
 1. Wrote unit tests using JUnit 5 and Mockk for Repository, ViewModels, RxPagingSource. In some cases also used fakes and Dagger.
-2. Wrote UI tests using Espresso
-3. Also tested app using Accessibility Scanner for accessibility purposes.
-4. Unfortunately, I faced some challenges when writing some of the tests, I made comments for them in the code.
+2. Also tested app using Accessibility Scanner for accessibility purposes.
+3. Unfortunately, I faced some challenges when writing some of the tests, I made comments for them in the code.
 
-## Some decisions
+### Some decisions
 
 * Jetpack Compose vs. Views
   I decided to use Views for this app because I noticed a mention in the role description of being able to use Butterknife. However, Butterknife is currently deprecated, so I opted to use simple findViewById() instead. If there is a need to demonstrate Jetpack Compose knowledge, please let me know, and I can build the UI using Compose.
@@ -60,3 +59,10 @@ tests:
 
 * LiveData vs. StateFlow
   The same reasoning as for RxJava vs. Kotlin Coroutines. LiveData was used in discover screen and StateFlow in search screen.
+  
+  
+### What can be done in the future to make the existing functionality better:
+
+1. Make an advanced error handling depending on different HTTP codes with different error messages and provide a single class or extension for it
+2. Write more unit tests and UI tests
+3. Enhance experience from using Paging library
