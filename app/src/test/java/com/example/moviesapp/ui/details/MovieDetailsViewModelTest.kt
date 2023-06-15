@@ -44,8 +44,6 @@ internal class MovieDetailsViewModelTest {
             MovieDetailsUIState(movie = validMovie, isLoading = false, isError = false),
             viewModel.movieDetailsUIState.getOrAwaitValue()
         )
-        // TODO:
-//        verify(exactly = 1) { moviesRepository.getMovieDetailsRx(validMovieId) }
     }
 
     @Test

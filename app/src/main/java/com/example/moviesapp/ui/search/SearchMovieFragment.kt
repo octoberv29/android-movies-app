@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
@@ -17,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesapp.R
 import com.example.moviesapp.data.di.MoviesApplication
+import com.example.moviesapp.ui.ConstantsUi.Companion.MOVIE_ID_KEY
 import com.example.moviesapp.ui.MainActivity
 import com.example.moviesapp.ui.search.di.DaggerSearchMovieFragmentComponent
 import com.google.android.material.textfield.TextInputEditText
@@ -104,8 +104,7 @@ class SearchMovieFragment: Fragment() {
     }
 
     private fun onMovieClick(movieId: Int) {
-        // TODO: magic string
-        val bundle = bundleOf("movie_id" to movieId)
+        val bundle = bundleOf(MOVIE_ID_KEY to movieId)
         findNavController().navigate(R.id.action_searchMovieFragment_to_detailsFragment, bundle)
     }
 }

@@ -17,6 +17,7 @@ import com.example.moviesapp.data.di.MoviesApplication
 import com.example.moviesapp.ui.MainActivity
 import com.example.moviesapp.ui.details.di.DaggerMovieDetailsFragmentComponent
 import com.example.moviesapp.ui.ConstantsUi
+import com.example.moviesapp.ui.ConstantsUi.Companion.MOVIE_ID_KEY
 import javax.inject.Inject
 
 /**
@@ -33,10 +34,6 @@ class MovieDetailsFragment : Fragment() {
     private lateinit var tvLanguage: TextView
 
     private var movieId: Int? = null
-
-    companion object {
-        private const val MOVIE_ID_KEY = "movie_id"
-    }
 
     @Inject
     lateinit var viewModelFactory: MovieDetailsViewModel.Companion.MovieDetailsViewModelFactory

@@ -10,8 +10,6 @@
     card_view:cardCornerRadius="@dimen/paddingSize16"
     card_view:cardElevation="@dimen/paddingSize4">
 
-    <!-- TODO: fix paddings, text, accessibility -->
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

@@ -67,11 +67,6 @@ class MoviesRepositoryImplTest {
             .test()
             .awaitDone(1, TimeUnit.SECONDS)
             .assertNoErrors()
-        // TODO: fix later
-//            .assertValueAt(0, PagingData.from(validMovieResponse.listOfMovies!!))
-
-        // TODO: use this in the GetMoviesRxPagingSource test
-//            .assertValueAt(0, PagingSource.LoadResult.Page(listOf(validMovie), 1, 2))
     }
 
     @Test

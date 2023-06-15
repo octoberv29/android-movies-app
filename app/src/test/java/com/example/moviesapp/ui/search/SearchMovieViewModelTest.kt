@@ -103,7 +103,6 @@ internal class SearchMovieViewModelTest {
             "loading state of SearchMovieUIState"
         )
 
-        // TODO: this test is flaky, figure out why
 //        assertEquals(
 //            SearchMovieUIState(movies = emptyList(), isLoading = false, isError = false),
 //            viewModel.searchMovieUIState.value,

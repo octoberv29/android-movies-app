@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesapp.R
 import com.example.moviesapp.data.network.Movie
 import com.example.moviesapp.data.di.MoviesApplication
+import com.example.moviesapp.ui.ConstantsUi.Companion.MOVIE_ID_KEY
 import com.example.moviesapp.ui.MainActivity
 import com.example.moviesapp.ui.discover.di.DaggerDiscoverMoviesFragmentComponent
 import javax.inject.Inject
@@ -110,7 +111,7 @@ class DiscoverMoviesFragment : Fragment() {
     }
 
     private fun onMovieClick(movieId: Int) {
-        val bundle = bundleOf("movie_id" to movieId)
+        val bundle = bundleOf(MOVIE_ID_KEY to movieId)
         findNavController().navigate(R.id.action_discoverFragment_to_detailsFragment, bundle)
     }
 }

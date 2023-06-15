@@ -2,6 +2,8 @@ package com.example.moviesapp.data.di
 
 import android.app.Application
 import com.example.moviesapp.data.ConstantsData
+import com.example.moviesapp.data.ConstantsData.Companion.API_KEY
+import com.example.moviesapp.data.ConstantsData.Companion.SAMPLE_API_KEY
 import com.example.moviesapp.data.repository.MoviesRepository
 import com.example.moviesapp.data.repository.MoviesRepositoryImpl
 import com.example.moviesapp.data.network.MovieApi
@@ -52,8 +54,9 @@ class NetworkModule(private val application: Application) {
         return Interceptor { chain ->
 
             val url: HttpUrl = chain.request().url.newBuilder()
-                // TODO: api key!!!
-                .addQueryParameter("api_key", "9321c4fc5f95b92bce700096da663cde")
+                    // in a production app this api key should come from the backend or be hidden
+                    // but for the purpose of demonstrating the app functionality I left it here
+                .addQueryParameter(API_KEY, SAMPLE_API_KEY)
                 .build()
 
             val request: Request = chain.request().newBuilder()
