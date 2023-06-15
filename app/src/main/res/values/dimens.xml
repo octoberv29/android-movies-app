@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="paddingSize0">0dp</dimen>
+    <dimen name="paddingSize1">1dp</dimen>
+    <dimen name="paddingSize4">4dp</dimen>
+    <dimen name="paddingSize8">8dp</dimen>
+    <dimen name="paddingSize16">16dp</dimen>
+
+    <dimen name="textSize12">12sp</dimen>
+    <dimen name="textSize16">16sp</dimen>
+
+    <dimen name="imageHeight">180dp</dimen>
+    <dimen name="imageWidth">120dp</dimen>
+</resources>

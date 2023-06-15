@@ -8,7 +8,7 @@
         android:id="@+id/fragment_search_search_text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/paddingSize16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -17,10 +17,10 @@
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="@string/type_your_search_term_here"
             android:id="@+id/fragment_search_search_text_input_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/type_your_search_term_here" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -28,8 +28,8 @@
         android:id="@+id/fragment_search_search_results_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:padding="4dp"
+        android:layout_margin="@dimen/paddingSize16"
+        android:padding="@dimen/paddingSize4"
         android:text="@string/search_results"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/fragment_search_search_text_input_layout"
@@ -41,7 +41,7 @@
         android:id="@+id/fragment_search_search_results_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/paddingSize16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/fragment_search_search_results_label"
         app:layout_constraintStart_toStartOf="@+id/fragment_search_search_results_label"

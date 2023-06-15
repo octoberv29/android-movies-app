@@ -14,8 +14,8 @@ class GetMoviesRxPagingSource(
 ) : RxPagingSource<Int, Movie>() {
 
     companion object {
-        const val DEFAULT_SORTING = "popularity.desc"
-        const val DEFAULT_START_PAGE = 1
+        private const val DEFAULT_SORTING = "popularity.desc"
+        private const val DEFAULT_START_PAGE = 1
     }
 
     override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, Movie>> {

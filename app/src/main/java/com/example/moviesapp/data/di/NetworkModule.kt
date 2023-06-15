@@ -3,7 +3,7 @@ package com.example.moviesapp.data.di
 import android.app.Application
 import com.example.moviesapp.data.ConstantsData
 import com.example.moviesapp.data.repository.MoviesRepository
-import com.example.moviesapp.data.repository.MoviesRepositoryImp
+import com.example.moviesapp.data.repository.MoviesRepositoryImpl
 import com.example.moviesapp.data.network.MovieApi
 import com.example.moviesapp.data.paging.GetMoviesRxPagingSource
 import dagger.Module
@@ -82,5 +82,5 @@ class NetworkModule(private val application: Application) {
         movieApi: MovieApi,
         pagingSource: GetMoviesRxPagingSource
     ): MoviesRepository =
-        MoviesRepositoryImp(movieApi, pagingSource)
+        MoviesRepositoryImpl(movieApi, pagingSource)
 }

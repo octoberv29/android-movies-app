@@ -55,7 +55,7 @@ class SearchMovieViewModel(
                     }
                 }
             }
-        } catch (t: Throwable) {
+        } catch (e: Exception) {
             _searchMovieUIState.update { currentState ->
                 currentState.copy(
                     isLoading = false,

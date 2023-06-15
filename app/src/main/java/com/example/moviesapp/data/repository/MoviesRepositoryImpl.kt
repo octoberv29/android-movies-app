@@ -8,15 +8,18 @@ import com.example.moviesapp.data.network.Movie
 import com.example.moviesapp.data.network.MovieApi
 import com.example.moviesapp.data.paging.GetMoviesRxPagingSource
 import io.reactivex.Flowable
+import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class MoviesRepositoryImp(
+class MoviesRepositoryImpl(
     private val movieApiService: MovieApi,
-    private val getMoviesRxPagingSource: GetMoviesRxPagingSource
+    private val getMoviesRxPagingSource: GetMoviesRxPagingSource,
+    private val ioScheduler: Scheduler = Schedulers.io(),
+    private val mainThreadScheduler: Scheduler = AndroidSchedulers.mainThread()
 ): MoviesRepository {
 
     override fun getMoviesRx(): Flowable<PagingData<Movie>> {
@@ -30,14 +33,14 @@ class MoviesRepositoryImp(
             ),
             pagingSourceFactory = { getMoviesRxPagingSource }
         ).flowable
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(ioScheduler)
+            .observeOn(mainThreadScheduler)
     }
 
     override fun getMovieDetailsRx(id: Int): Single<Movie> {
         return movieApiService.getMovieDetailsRx(id)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(ioScheduler)
+            .observeOn(mainThreadScheduler)
     }
 
     override suspend fun searchMovieUsingQuery(searchTerm: String): List<Movie>? {

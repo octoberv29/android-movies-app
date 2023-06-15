@@ -5,16 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: padding, accessibility -->
-
-    <!-- Original Title -->
-
     <ImageView
         android:id="@+id/fragment_details_poster"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/imageHeight"
         android:importantForAccessibility="no"
-        android:padding="16dp"
+        android:padding="@dimen/paddingSize16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -25,13 +21,13 @@
 
     <TextView
         android:id="@+id/fragment_details_title"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/paddingSize0"
         android:layout_height="wrap_content"
         android:maxLines="4"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp"
+        android:paddingStart="@dimen/paddingSize16"
+        android:paddingTop="@dimen/paddingSize16"
         android:paddingEnd="32dp"
-        android:paddingBottom="16dp"
+        android:paddingBottom="@dimen/paddingSize16"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintBottom_toBottomOf="@+id/fragment_details_poster"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,8 +39,8 @@
 
     <View
         android:id="@+id/fragment_details_divider_top"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_width="@dimen/paddingSize0"
+        android:layout_height="@dimen/paddingSize1"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,14 +49,13 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_details_poster"
         app:layout_constraintVertical_bias="0.0" />
 
-    <!-- Vote Average -->
     <TextView
         android:id="@+id/fragment_details_label_vote_average"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/paddingSize16"
+        android:layout_marginTop="@dimen/paddingSize8"
+        android:layout_marginEnd="@dimen/paddingSize16"
         android:text="@string/vote_average"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
         app:layout_constraintEnd_toStartOf="@+id/fragment_details_label_language"
@@ -72,7 +67,7 @@
         android:id="@+id/fragment_details_vote_average"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
+        android:drawablePadding="@dimen/paddingSize8"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
         app:layout_constraintEnd_toEndOf="@+id/fragment_details_label_vote_average"
@@ -80,13 +75,12 @@
         app:layout_constraintTop_toTopOf="@+id/fragment_details_release_date"
         tools:text="7/10" />
 
-    <!-- Release Date -->
     <TextView
         android:id="@+id/fragment_details_release_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:drawablePadding="8dp"
+        android:layout_marginTop="@dimen/paddingSize16"
+        android:drawablePadding="@dimen/paddingSize8"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
         app:layout_constraintEnd_toEndOf="@+id/fragment_details_label_release_date"
@@ -98,21 +92,20 @@
         android:id="@+id/fragment_details_label_release_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/paddingSize16"
+        android:layout_marginTop="@dimen/paddingSize8"
+        android:layout_marginEnd="@dimen/paddingSize16"
         android:text="@string/release_date"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fragment_details_label_language"
         app:layout_constraintTop_toBottomOf="@+id/fragment_details_release_date" />
 
-    <!-- Language -->
     <TextView
         android:id="@+id/fragment_details_label_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/paddingSize8"
         android:text="@string/language"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
         app:layout_constraintEnd_toStartOf="@+id/fragment_details_label_release_date"
@@ -123,7 +116,7 @@
         android:id="@+id/fragment_details_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
+        android:drawablePadding="@dimen/paddingSize8"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
         app:layout_constraintEnd_toEndOf="@+id/fragment_details_label_language"
@@ -133,20 +126,19 @@
 
     <View
         android:id="@+id/fragment_details_divider_bottom"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="@dimen/paddingSize0"
+        android:layout_height="@dimen/paddingSize1"
+        android:layout_marginTop="@dimen/paddingSize16"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_details_label_vote_average" />
 
-    <!-- Overview -->
     <TextView
         android:id="@+id/fragment_details_label_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/paddingSize16"
         android:layout_marginTop="32dp"
         android:text="@string/overview"
         app:layout_constraintStart_toStartOf="parent"
@@ -155,8 +147,8 @@
     <TextView
         android:id="@+id/fragment_details_overview"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:padding="16dp"
+        android:layout_height="@dimen/paddingSize0"
+        android:padding="@dimen/paddingSize16"
         android:scrollbars="vertical"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -175,6 +167,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,9 +4,7 @@ import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.moviesapp.data.repository.MoviesRepository
 import com.example.moviesapp.data.network.Movie
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
@@ -42,8 +40,6 @@ class MovieDetailsViewModel(
 
     private fun getMovieDetailsRx(movieId: Int): Disposable {
         return moviesRepository.getMovieDetailsRx(movieId)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 this::handleMovieDetails,
                 this::handleError
