@@ -1,0 +1,20 @@
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+
+    // JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
+    testImplementation "org.junit.jupiter:junit-jupiter-params:5.9.1"
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
+
+    // Mockk
+    testImplementation 'io.mockk:mockk:1.13.2'
+
+    // Kotlin Coroutines testing
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+
+    // Dagger
+    testImplementation "com.google.dagger:dagger:2.45"
+    kaptTest "com.google.dagger:dagger-compiler:2.45"
+}

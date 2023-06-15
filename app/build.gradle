@@ -5,6 +5,7 @@ plugins {
 }
 
 apply from:"../jetpackcompose.gradle"
+apply from:"../testing.gradle"
 
 android {
     namespace 'com.example.moviesapp'
@@ -40,6 +41,15 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    testLogging {
+        exceptionFormat "full"
+        events "started", "skipped", "passed", "failed"
+        showStandardStreams true
     }
 }
 
