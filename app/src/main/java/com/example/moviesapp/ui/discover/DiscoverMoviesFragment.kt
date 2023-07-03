@@ -76,11 +76,13 @@ class DiscoverMoviesFragment : Fragment() {
         }
         rvMovies.adapter = discoverMoviesAdapter
         initViewModelInteractions()
+        // to prevent duplicating calls over configuration change
+        if (savedInstanceState == null) {
+            viewModel.initDiscovering()
+        }
     }
 
     private fun initViewModelInteractions() {
-        viewModel.initDiscovering()
-
         viewModel.discoverMoviesUiState.observe(viewLifecycleOwner) { state ->
             showLoading(state.isLoading)
             showNetworkError(state.isError)

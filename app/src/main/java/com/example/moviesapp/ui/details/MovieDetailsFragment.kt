@@ -69,6 +69,10 @@ class MovieDetailsFragment : Fragment() {
         tvOverview = view.findViewById(R.id.fragment_details_overview)
         tvLanguage = view.findViewById(R.id.fragment_details_language)
 
+        // to prevent duplicating calls over configuration change
+        if (savedInstanceState == null && movieId != null) {
+            viewModel.initDetailsFetch(movieId!!)
+        }
         initViewModelInteractions()
     }
 
@@ -76,7 +80,6 @@ class MovieDetailsFragment : Fragment() {
         if (movieId == null) {
             showMovieIdError()
         } else {
-            viewModel.initDetailsFetch(movieId!!)
             viewModel.movieDetailsUIState.observe(this) { state ->
                 showLoading(state.isLoading)
                 showNetworkError(state.isError)

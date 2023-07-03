@@ -68,14 +68,16 @@ class SearchMovieFragment: Fragment() {
         adapter = SearchMovieAdapter(this::onMovieClick)
         rvSearchResults.adapter = adapter
 
+        // to prevent duplicating calls over configuration change
+        if (savedInstanceState == null) {
+            etSearchTerm.addTextChangedListener {
+                viewModel.initSearch(it.toString())
+            }
+        }
         initViewModelInteractions()
     }
 
     private fun initViewModelInteractions() {
-        etSearchTerm.addTextChangedListener {
-            viewModel.initSearch(it.toString())
-        }
-
         lifecycleScope.launch {
             viewModel.searchMovieUIState.collect { state ->
                 showLoading(state.isLoading)
