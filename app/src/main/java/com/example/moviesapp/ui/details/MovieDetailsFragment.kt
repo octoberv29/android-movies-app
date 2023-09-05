@@ -13,16 +13,15 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.moviesapp.R
 import com.example.moviesapp.data.network.Movie
-import com.example.moviesapp.data.di.MoviesApplication
 import com.example.moviesapp.ui.MainActivity
-import com.example.moviesapp.ui.details.di.DaggerMovieDetailsFragmentComponent
 import com.example.moviesapp.ui.ConstantsUi
 import com.example.moviesapp.ui.ConstantsUi.Companion.MOVIE_ID_KEY
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * MovieDetailsFragment is a fragment that shows details for a given movie using movieId
  */
+@AndroidEntryPoint
 class MovieDetailsFragment : Fragment() {
 
     private lateinit var progressBar: ProgressBar
@@ -35,18 +34,10 @@ class MovieDetailsFragment : Fragment() {
 
     private var movieId: Int? = null
 
-    @Inject
-    lateinit var viewModelFactory: MovieDetailsViewModel.Companion.MovieDetailsViewModelFactory
-    private val viewModel: MovieDetailsViewModel by viewModels { viewModelFactory }
+    private val viewModel: MovieDetailsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        DaggerMovieDetailsFragmentComponent.builder()
-            .appComponent((context?.applicationContext as MoviesApplication).appComponent)
-            .build()
-            .inject(this)
-
         movieId = arguments?.getInt(MOVIE_ID_KEY)
     }
 

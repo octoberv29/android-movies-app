@@ -15,14 +15,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesapp.R
-import com.example.moviesapp.data.di.MoviesApplication
 import com.example.moviesapp.ui.ConstantsUi.Companion.MOVIE_ID_KEY
 import com.example.moviesapp.ui.MainActivity
-import com.example.moviesapp.ui.search.di.DaggerSearchMovieFragmentComponent
 import com.google.android.material.textfield.TextInputEditText
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
+@AndroidEntryPoint
 class SearchMovieFragment: Fragment() {
 
     private lateinit var etSearchTerm: TextInputEditText
@@ -35,18 +34,7 @@ class SearchMovieFragment: Fragment() {
         private const val DEFAULT_SEARCH_ACTION_BAR_TITLE = "Search movie"
     }
 
-    @Inject
-    lateinit var viewModelFactory: SearchMovieViewModel.Companion.SearchMovieViewModelFactory
-    private val viewModel: SearchMovieViewModel by viewModels { viewModelFactory }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        DaggerSearchMovieFragmentComponent.builder()
-            .appComponent((activity?.applicationContext as MoviesApplication).appComponent)
-            .build()
-            .inject(this)
-    }
+    private val viewModel: SearchMovieViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

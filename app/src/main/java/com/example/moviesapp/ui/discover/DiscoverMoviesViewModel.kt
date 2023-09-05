@@ -1,11 +1,11 @@
 package com.example.moviesapp.ui.discover
 
 import androidx.lifecycle.*
-import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.paging.PagingData
 import androidx.paging.rxjava2.cachedIn
 import com.example.moviesapp.data.repository.MoviesRepository
 import com.example.moviesapp.data.network.Movie
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
@@ -22,7 +22,8 @@ data class DiscoverMoviesUiState(
 /**
  * DiscoverMoviesViewModel is a ViewModel class associated with DiscoverMoviesFragment
  */
-class DiscoverMoviesViewModel(
+@HiltViewModel
+class DiscoverMoviesViewModel @Inject constructor(
     private val moviesRepository: MoviesRepository,
 ) : ViewModel() {
 
@@ -70,18 +71,5 @@ class DiscoverMoviesViewModel(
     override fun onCleared() {
         super.onCleared()
         moviesDisposable?.dispose()
-    }
-
-    companion object {
-        @Suppress("UNCHECKED_CAST")
-        class DiscoverMoviesViewModelFactory @Inject constructor(
-            private val moviesRepository: MoviesRepository
-        ) : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
-                return DiscoverMoviesViewModel(
-                    moviesRepository
-                ) as T
-            }
-        }
     }
 }

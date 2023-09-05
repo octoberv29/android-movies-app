@@ -1,9 +1,9 @@
 package com.example.moviesapp.ui.search
 
 import androidx.lifecycle.*
-import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.moviesapp.data.repository.MoviesRepository
 import com.example.moviesapp.data.network.Movie
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,7 +23,8 @@ data class SearchMovieUIState(
 /**
  * SearchMovieViewModel is a ViewModel associated with a SearchMovieFragment
  */
-class SearchMovieViewModel(
+@HiltViewModel
+class SearchMovieViewModel @Inject constructor(
     private val moviesRepository: MoviesRepository
 ): ViewModel() {
 
@@ -73,19 +74,6 @@ class SearchMovieViewModel(
                 isLoading = false,
                 isError = true
             )
-        }
-    }
-
-    companion object {
-        @Suppress("UNCHECKED_CAST")
-        class SearchMovieViewModelFactory @Inject constructor(
-            private val moviesRepository: MoviesRepository,
-        ) : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
-                return SearchMovieViewModel(
-                    moviesRepository
-                ) as T
-            }
         }
     }
 }

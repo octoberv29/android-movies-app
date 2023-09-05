@@ -16,40 +16,25 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesapp.R
 import com.example.moviesapp.data.network.Movie
-import com.example.moviesapp.data.di.MoviesApplication
 import com.example.moviesapp.ui.ConstantsUi.Companion.MOVIE_ID_KEY
 import com.example.moviesapp.ui.MainActivity
-import com.example.moviesapp.ui.discover.di.DaggerDiscoverMoviesFragmentComponent
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * DiscoverMoviesFragment is responsible for showing a list of popular movies
  */
+@AndroidEntryPoint
 class DiscoverMoviesFragment : Fragment() {
 
     private lateinit var rvMovies: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var discoverMoviesAdapter: DiscoverMoviesAdapter
 
-    @Inject
-    lateinit var viewModelFactory: DiscoverMoviesViewModel.Companion.DiscoverMoviesViewModelFactory
-    private val viewModel: DiscoverMoviesViewModel by viewModels { viewModelFactory }
+    private val viewModel: DiscoverMoviesViewModel by viewModels()
 
     companion object  {
         private const val DEFAULT_NUMBER_OF_COLUMNS = 3
         const val DEFAULT_DISCOVER_MOVIES_ACTION_BAR_TITLE = "Discover Popular Movies"
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        injectComponent()
-    }
-
-    private fun injectComponent() {
-        DaggerDiscoverMoviesFragmentComponent.builder()
-            .appComponent((context?.applicationContext as MoviesApplication).appComponent)
-            .build()
-            .inject(this)
     }
 
     override fun onCreateView(

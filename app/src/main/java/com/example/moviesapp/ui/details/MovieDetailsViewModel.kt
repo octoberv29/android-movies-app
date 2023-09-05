@@ -1,9 +1,9 @@
 package com.example.moviesapp.ui.details
 
 import androidx.lifecycle.*
-import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.moviesapp.data.repository.MoviesRepository
 import com.example.moviesapp.data.network.Movie
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
@@ -19,7 +19,8 @@ data class MovieDetailsUIState(
 /**
  * MovieDetailsViewModel is a ViewModel associated with a MovieDetailsFragment
  */
-class MovieDetailsViewModel(
+@HiltViewModel
+class MovieDetailsViewModel @Inject constructor(
     private val moviesRepository: MoviesRepository
 ) : ViewModel() {
 
@@ -66,18 +67,5 @@ class MovieDetailsViewModel(
     override fun onCleared() {
         super.onCleared()
         getMovieDetailDisposable?.dispose()
-    }
-
-    companion object {
-        @Suppress("UNCHECKED_CAST")
-        class MovieDetailsViewModelFactory @Inject constructor(
-            private val moviesRepository: MoviesRepository,
-        ) : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
-                return MovieDetailsViewModel(
-                    moviesRepository
-                ) as T
-            }
-        }
     }
 }

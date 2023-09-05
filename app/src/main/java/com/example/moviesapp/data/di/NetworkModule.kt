@@ -1,6 +1,5 @@
 package com.example.moviesapp.data.di
 
-import android.app.Application
 import com.example.moviesapp.data.ConstantsData
 import com.example.moviesapp.data.ConstantsData.Companion.API_KEY
 import com.example.moviesapp.data.ConstantsData.Companion.SAMPLE_API_KEY
@@ -10,6 +9,8 @@ import com.example.moviesapp.data.network.MovieApi
 import com.example.moviesapp.data.paging.GetMoviesRxPagingSource
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -21,14 +22,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-class NetworkModule(private val application: Application) {
+@InstallIn(SingletonComponent::class)
+class NetworkModule {
 
-    @Provides
     @Singleton
-    fun providesApplication(): Application = application
-
     @Provides
-    @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(ConstantsData.BASE_URL)
@@ -38,8 +36,8 @@ class NetworkModule(private val application: Application) {
             .build()
     }
 
-    @Provides
     @Singleton
+    @Provides
     fun provideOkHttpClient(authInterceptor: Interceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
@@ -47,9 +45,8 @@ class NetworkModule(private val application: Application) {
             .build()
     }
 
-
-    @Provides
     @Singleton
+    @Provides
     fun provideAuthInterceptor(): Interceptor {
         return Interceptor { chain ->
 
@@ -67,20 +64,20 @@ class NetworkModule(private val application: Application) {
         }
     }
 
-    @Provides
     @Singleton
+    @Provides
     fun provideMovieApi(retrofit: Retrofit): MovieApi =
         retrofit.create(MovieApi::class.java)
 
-    @Provides
     @Singleton
+    @Provides
     fun provideGetMoviesPagingSource(
         movieApi: MovieApi,
     ): GetMoviesRxPagingSource =
         GetMoviesRxPagingSource(movieApi)
 
-    @Provides
     @Singleton
+    @Provides
     fun provideRepository(
         movieApi: MovieApi,
         pagingSource: GetMoviesRxPagingSource

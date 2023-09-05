@@ -1,16 +1,7 @@
 package com.example.moviesapp.data.di
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class MoviesApplication: Application() {
-
-    lateinit var appComponent: AppComponent
-
-    override fun onCreate() {
-        super.onCreate()
-
-        appComponent = DaggerAppComponent.builder()
-            .networkModule(NetworkModule(applicationContext as Application))
-            .build()
-    }
-}
+@HiltAndroidApp
+class MoviesApplication: Application()
